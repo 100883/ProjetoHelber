@@ -45,7 +45,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="title" type="java.lang.String" value="SysFrama - Sistema para Controle e Manuten&#xe7;&#xe3;o"/>
+    <Property name="title" type="java.lang.String" value="SysFrama - Sistema para Controle e Manuten&#xe7;&#xe3;o de Farm&#xe1;cia"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>

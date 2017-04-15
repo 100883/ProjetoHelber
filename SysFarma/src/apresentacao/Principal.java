@@ -40,7 +40,7 @@ public class Principal extends javax.swing.JFrame {
         mnuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SysFrama - Sistema para Controle e Manutenção");
+        setTitle("SysFrama - Sistema para Controle e Manutenção de Farmácia");
 
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
