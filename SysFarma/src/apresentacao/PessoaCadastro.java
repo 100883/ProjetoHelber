@@ -339,6 +339,11 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         });
 
         btnExcluir.setText("Excluir");
+        btnExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -476,6 +481,7 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
             
             if (pessoa.getCodigo() != 0) {
                 preencherTela(pessoa);
+                DesbloquearCampos();
             } else {
                 JOptionPane.showMessageDialog(null, "Pessoa inexistente!");
             }
@@ -485,6 +491,25 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
     }//GEN-LAST:event_btnPesquisarActionPerformed
+
+    private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+        try {
+            
+            int resposta = JOptionPane.showConfirmDialog(null, 
+                    "Conforma a exclusão da pessoa?", "SysFarma",
+                    JOptionPane.YES_NO_OPTION);
+            
+            if(resposta == JOptionPane.YES_OPTION){
+                int codigo = Integer.parseInt(txtCod.getText());
+                new NPessoa().excluir(codigo);
+                JOptionPane.showMessageDialog(null, "Operação realizada com sucesso!");
+                
+                LimparCampos();
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnExcluirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -550,30 +575,30 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         }
     }
     
-    private void preencherTela(EPessoa pessoa) {
-        txtCod.setText(pessoa.getCodigo() + "");
-        cmbTipoPessoa.setSelectedItem(pessoa.getTipoPessoa());
-        txtNome.setText(pessoa.getNome());
-        txtDocumento.setText(pessoa.getDocumento());
-        txtLogradouro.setText(pessoa.getLogradouro());
-        txtNumero.setText(pessoa.getNumero());
-        txtComplemento.setText(pessoa.getComplemento());
-        txtBairro.setText(pessoa.getBairro());
-        txtCidade.setText(pessoa.getCidade());
-        txtUF.setText(pessoa.getUF());
-        txtCEP.setText(pessoa.getCep());
-        txtFone.setText(pessoa.getFone());
-        txtFax.setText(pessoa.getFax());
-        txtEmail.setText(pessoa.getEmail());
+    private void preencherTela(EPessoa parametro) {
+        txtCod.setText(parametro.getCodigo() + "");
+        cmbTipoPessoa.setSelectedItem(parametro.getTipoPessoa());
+        txtNome.setText(parametro.getNome());
+        txtDocumento.setText(parametro.getDocumento());
+        txtLogradouro.setText(parametro.getLogradouro());
+        txtNumero.setText(parametro.getNumero());
+        txtComplemento.setText(parametro.getComplemento());
+        txtBairro.setText(parametro.getBairro());
+        txtCidade.setText(parametro.getCidade());
+        txtUF.setText(parametro.getUF());
+        txtCEP.setText(parametro.getCep());
+        txtFone.setText(parametro.getFone());
+        txtFax.setText(parametro.getFax());
+        txtEmail.setText(parametro.getEmail());
         
-        if ("Ambos".equals(pessoa.getCliente())) {
+        if ("Ambos".equals(parametro.getCliente())) {
             cbxFornecedor.setSelected(true);
             cbxLaboratorio.setSelected(true);
             
-        } else if ("Fornecedor".equals(pessoa.getCliente())) {
+        } else if ("Fornecedor".equals(parametro.getCliente())) {
             cbxFornecedor.setSelected(true);
             
-        } else if ("Laboratorio".equals(pessoa.getCliente())) {
+        } else if ("Laboratorio".equals(parametro.getCliente())) {
             cbxLaboratorio.setSelected(true);
             
         }

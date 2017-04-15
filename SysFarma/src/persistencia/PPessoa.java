@@ -139,20 +139,20 @@ public class PPessoa {
 
         if (rs.next()) {
             retorno.setCodigo(rs.getInt("codigo"));
-            retorno.setTipoPessoa("tipopessoa");
-            retorno.setNome("nome");
-            retorno.setDocumento("documento");
-            retorno.setCep("cep");
-            retorno.setNumero("numero");
-            retorno.setComplemento("complemento");
-            retorno.setFone("fone");
-            retorno.setFax("fax");
-            retorno.setEmail("email");
-            retorno.setCliente("tipocliente");
-            retorno.setLogradouro("logradouro");
-            retorno.setBairro("bairro");
-            retorno.setCidade("cidade");
-            retorno.setUF("uf");
+            retorno.setTipoPessoa(rs.getString("tipopessoa"));
+            retorno.setNome(rs.getString("nome"));
+            retorno.setDocumento(rs.getString("documento"));
+            retorno.setCep(rs.getString("cep"));
+            retorno.setNumero(rs.getString("numero"));
+            retorno.setComplemento(rs.getString("complemento"));
+            retorno.setFone(rs.getString("fone"));
+            retorno.setFax(rs.getString("fax"));
+            retorno.setEmail(rs.getString("email"));
+            retorno.setCliente(rs.getString("tipocliente"));
+            retorno.setLogradouro(rs.getString("logradouro"));
+            retorno.setBairro(rs.getString("bairro"));
+            retorno.setCidade(rs.getString("cidade"));
+            retorno.setUF(rs.getString("uf"));
         }
         rs.close();
         cnn.close();
