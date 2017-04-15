@@ -62,8 +62,8 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         txtDocumento = new javax.swing.JFormattedTextField();
         btnPesquisar = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        cbxFornecedor = new javax.swing.JCheckBox();
+        cbxLaboratorio = new javax.swing.JCheckBox();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -120,9 +120,14 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
 
         jLabel15.setText("Tipo Cliente:");
 
-        jCheckBox1.setText("Fornedor");
+        cbxFornecedor.setText("Fornecedor");
+        cbxFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxFornecedorActionPerformed(evt);
+            }
+        });
 
-        jCheckBox2.setText("Laboratório");
+        cbxLaboratorio.setText("Laboratório");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -151,10 +156,10 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
                         .addGap(30, 30, 30)
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jCheckBox1)
+                        .addComponent(cbxFornecedor)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jCheckBox2)
-                        .addGap(0, 12, Short.MAX_VALUE)))
+                        .addComponent(cbxLaboratorio)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -179,10 +184,10 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
                             .addComponent(jLabel15)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(jCheckBox2))
+                        .addComponent(cbxLaboratorio))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(jCheckBox1))
+                        .addComponent(cbxFornecedor))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(74, 74, 74)
                         .addComponent(jLabel4)))
@@ -419,6 +424,16 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
             pessoa.setFax(txtFax.getText());
             pessoa.setEmail(txtEmail.getText());
 
+            if (cbxFornecedor.isSelected() && cbxLaboratorio.isSelected()) {
+                pessoa.setCliente("Ambos");
+            } else if (cbxFornecedor.isSelected()) {
+                pessoa.setCliente("Fornecedor");
+            } else if (cbxLaboratorio.isSelected()) {
+                pessoa.setCliente("Laboratorio");
+            } else {
+                pessoa.setCliente("Cliente");
+            }
+
             NPessoa negocio = new NPessoa();
             negocio.salvar(pessoa);
 
@@ -430,6 +445,10 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnSalvarActionPerformed
 
+    private void cbxFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxFornecedorActionPerformed
+
+    }//GEN-LAST:event_cbxFornecedorActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
@@ -437,9 +456,9 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
+    private javax.swing.JCheckBox cbxFornecedor;
+    private javax.swing.JCheckBox cbxLaboratorio;
     private javax.swing.JComboBox<String> cmbTipoPessoa;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
