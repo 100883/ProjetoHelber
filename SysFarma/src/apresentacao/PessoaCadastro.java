@@ -60,6 +60,7 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         cmbTipoPessoa = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         txtDocumento = new javax.swing.JFormattedTextField();
+        btnPesquisar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -84,7 +85,6 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         txtEmail = new javax.swing.JTextField();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         btnAlterar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
 
@@ -95,6 +95,8 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Código:");
+
+        txtCod.setEditable(false);
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Nome:");
@@ -111,6 +113,8 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
 
         jLabel4.setText("CPF/ CNPJ:");
 
+        btnPesquisar.setText("Pesquisar");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -126,7 +130,9 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(101, 101, 101)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnPesquisar)
+                        .addGap(26, 26, 26)
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(cmbTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -144,7 +150,8 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
                     .addComponent(jLabel1)
                     .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3)
-                    .addComponent(cmbTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(jLabel2)
@@ -281,12 +288,20 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         );
 
         btnNovo.setText("Novo");
+        btnNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovoActionPerformed(evt);
+            }
+        });
 
         btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalvarActionPerformed(evt);
+            }
+        });
 
-        btnBuscar.setText("Buscar");
-
-        btnAlterar.setText("Alterar");
+        btnAlterar.setText("Limpar");
 
         btnExcluir.setText("Excluir");
 
@@ -305,8 +320,6 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuscar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnExcluir)
@@ -320,7 +333,6 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(btnSalvar)
-                    .addComponent(btnBuscar)
                     .addComponent(btnAlterar)
                     .addComponent(btnExcluir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -345,12 +357,59 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_cmbTipoPessoaActionPerformed
 
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        txtCod.setEnabled(false);
+        DesbloquearCampos();
+
+        LimparCampos();
+        btnNovo.setEnabled(false);
+        btnPesquisar.setEnabled(false);
+        btnAlterar.setEnabled(false);
+        btnSalvar.setEnabled(true);
+
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
+        try {
+            ValidarTela();
+
+            EPessoa pessoa = new EPessoa();
+
+            if (!txtCod.getText().isEmpty()) {
+                pessoa.setCodigo(Integer.parseInt(txtCod.getText()));
+            }
+
+            pessoa.setTipoPessoa((String) cmbTipoPessoa.getSelectedItem());
+            pessoa.setNome(txtNome.getText());
+            pessoa.setDocumento(txtDocumento.getText());
+            pessoa.setLogradouro(txtLogradouro.getText());
+            pessoa.setNumero(txtNumero.getText());
+            pessoa.setComplemento(txtComplemento.getText());
+            pessoa.setBairro(txtBairro.getText());
+            pessoa.setCidade(txtCidade.getText());
+            pessoa.setUF(txtUF.getText());
+            pessoa.setCep(txtCEP.getText());
+            pessoa.setFone(txtFone.getText());
+            pessoa.setFax(txtFax.getText());
+            pessoa.setEmail(txtEmail.getText());
+
+            NPessoa negocio = new NPessoa();
+            negocio.salvar(pessoa);
+
+            JOptionPane.showMessageDialog(null, "Operação realizada com sucesso!");
+            LimparCampos();
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnSalvarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnNovo;
+    private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbTipoPessoa;
     private javax.swing.JLabel jLabel1;
@@ -385,6 +444,27 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtUF;
     // End of variables declaration//GEN-END:variables
 
+    private void ValidarTela() throws Exception {
+        if (txtNome.getText().isEmpty()) {
+            throw new Exception("É necessário preencher o campo Nome!");
+        }
+        if (cmbTipoPessoa.getSelectedIndex() == 0) {
+            throw new Exception("É necessário preencher o campo Tipo Pessoa!");
+        }
+        if (txtDocumento.getText().isEmpty()) {
+            throw new Exception("É necessário preencher o campo CPF/ CNPJ!");
+        }
+        if (txtLogradouro.getText().isEmpty()) {
+            throw new Exception("É necessário preencher o campo Logradouro!");
+        }
+        if (txtCidade.getText().isEmpty()) {
+            throw new Exception("É necessário preencher o campo Cidade!");
+        }
+        if (txtUF.getText().isEmpty()) {
+            throw new Exception("É necessário preencher o campo UF!");
+        }
+    }
+
     private void LimparCampos() {
         txtCod.setText("");
         cmbTipoPessoa.setSelectedItem("Selecione...");
@@ -418,6 +498,22 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         txtFone.setEnabled(false);
         txtFax.setEnabled(false);
         txtEmail.setEnabled(false);
+    }
+
+    private void DesbloquearCampos() {
+        cmbTipoPessoa.setEnabled(true);
+        txtNome.setEnabled(true);
+        txtDocumento.setEnabled(true);
+        txtLogradouro.setEnabled(true);
+        txtNumero.setEnabled(true);
+        txtComplemento.setEnabled(true);
+        txtBairro.setEnabled(true);
+        txtCidade.setEnabled(true);
+        txtUF.setEnabled(true);
+        txtCEP.setEnabled(true);
+        txtFone.setEnabled(true);
+        txtFax.setEnabled(true);
+        txtEmail.setEnabled(true);
     }
 
 }

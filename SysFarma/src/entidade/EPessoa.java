@@ -15,15 +15,20 @@ public class EPessoa {
     private String tipoPessoa;
     private String nome;
     private String documento;
-    private String cep;
-    private String numero;
-    private String complemento;
     private String fone;
     private String fax;
     private String email;
     private String cliente;
     private String fornecedor;
     private String laboratorio;
+    
+    private String Logradouro;
+    private String complemento;
+    private String numero;
+    private String bairro;
+    private String cidade;
+    private String UF;
+    private String cep;
 
     public int getCodigo() {
         return codigo;
@@ -127,6 +132,38 @@ public class EPessoa {
 
     public void setLaboratorio(String laboratorio) {
         this.laboratorio = laboratorio;
+    }
+
+    public String getLogradouro() {
+        return Logradouro;
+    }
+
+    public void setLogradouro(String Logradouro) {
+        this.Logradouro = Logradouro;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getUF() {
+        return UF;
+    }
+
+    public void setUF(String UF) {
+        this.UF = UF;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
     
     
