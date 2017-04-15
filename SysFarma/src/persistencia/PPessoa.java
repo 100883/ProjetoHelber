@@ -28,8 +28,8 @@ public class PPessoa {
 
         String sql = "INSERT INTO pessoa (tipopessoa, "
                 + "nome, documento, cep, numero, complemento, "
-                + "fone, fax, email, cliente, fornecedor, laboratorio)"
-                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+                + "fone, fax, email, tipocliente, logradouro, bairro, cidade, uf)"
+                + " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         Connection cnn = util.Conexao.getConexao();
 
@@ -45,8 +45,10 @@ public class PPessoa {
         prd.setString(8, parametro.getFax());
         prd.setString(9, parametro.getEmail());
         prd.setString(10, parametro.getCliente());
-        prd.setString(11, parametro.getFornecedor());
-        prd.setString(12, parametro.getLaboratorio());
+        prd.setString(11, parametro.getLogradouro());
+        prd.setString(12, parametro.getBairro());
+        prd.setString(13, parametro.getCidade());
+        prd.setString(12, parametro.getUF());
 
         prd.execute();
 
@@ -78,9 +80,11 @@ public class PPessoa {
                 + "fone = ?, "
                 + "fax = ?, "
                 + "email = ?, "
-                + "cliente = ?, "
-                + "fornecedor = ?, "
-                + "laboratorio = ?, "
+                + "tipocliente = ?, "
+                + "logradouro = ?, "
+                + "bairro = ?, "
+                + "cidade = ?, "
+                + "uf = ?, "
                 + " WHERE codigo = ?";
 
         PreparedStatement prd = cnn.prepareStatement(sql);
@@ -95,9 +99,11 @@ public class PPessoa {
         prd.setString(8, parametro.getFax());
         prd.setString(9, parametro.getEmail());
         prd.setString(10, parametro.getCliente());
-        prd.setString(11, parametro.getFornecedor());
-        prd.setString(12, parametro.getLaboratorio());
-        prd.setInt(13, parametro.getCodigo());
+        prd.setString(11, parametro.getLogradouro());
+        prd.setString(12, parametro.getBairro());
+        prd.setString(13, parametro.getCidade());
+        prd.setString(14, parametro.getUF());
+        prd.setInt(15, parametro.getCodigo());
 
         prd.execute();
         cnn.close();
@@ -122,7 +128,7 @@ public class PPessoa {
 
         String slq = "SELECT codigo, tipopessoa, "
                 + "nome, documento, cep, numero, complemento, "
-                + "fone, fax, email, cliente, fornecedor, laboratorio "
+                + "fone, fax, email, tipocliente, logradouro, bairro, cidade, uf "
                 + "FROM pessoa WHERE codigo = ?";
 
         PreparedStatement prd = cnn.prepareStatement(slq);
@@ -142,9 +148,11 @@ public class PPessoa {
             retorno.setFone("fone");
             retorno.setFax("fax");
             retorno.setEmail("email");
-            retorno.setCliente("cliente");
-            retorno.setFornecedor("fornecedor");
-            retorno.setLaboratorio("laboratorio");
+            retorno.setCliente("tipocliente");
+            retorno.setLogradouro("logradouro");
+            retorno.setBairro("bairro");
+            retorno.setCidade("cidade");
+            retorno.setUF("uf");
         }
         rs.close();
         cnn.close();
@@ -190,9 +198,11 @@ public class PPessoa {
             pessoa.setFone(rs.getString("fone"));
             pessoa.setFax(rs.getString("fax"));
             pessoa.setEmail(rs.getString("email"));
-            pessoa.setCliente(rs.getString("cliente"));
-            pessoa.setFornecedor(rs.getString("fornecedor"));
-            pessoa.setLaboratorio(rs.getString("laboratorio"));
+            pessoa.setCliente(rs.getString("tipocliente"));
+            pessoa.setLogradouro(rs.getString("logradouro"));
+            pessoa.setBairro(rs.getString("bairro"));
+            pessoa.setCidade(rs.getString("cidade"));
+            pessoa.setUF(rs.getString("uf"));
             lista.add(pessoa);
         }
         rs.close();

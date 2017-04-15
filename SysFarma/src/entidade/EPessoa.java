@@ -19,8 +19,6 @@ public class EPessoa {
     private String fax;
     private String email;
     private String cliente;
-    private String fornecedor;
-    private String laboratorio;
     
     private String Logradouro;
     private String complemento;
@@ -116,22 +114,6 @@ public class EPessoa {
 
     public void setCliente(String cliente) {
         this.cliente = cliente;
-    }
-
-    public String getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(String fornecedor) {
-        this.fornecedor = fornecedor;
-    }
-
-    public String getLaboratorio() {
-        return laboratorio;
-    }
-
-    public void setLaboratorio(String laboratorio) {
-        this.laboratorio = laboratorio;
     }
 
     public String getLogradouro() {
