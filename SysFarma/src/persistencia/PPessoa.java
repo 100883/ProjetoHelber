@@ -48,7 +48,7 @@ public class PPessoa {
         prd.setString(11, parametro.getLogradouro());
         prd.setString(12, parametro.getBairro());
         prd.setString(13, parametro.getCidade());
-        prd.setString(12, parametro.getUF());
+        prd.setString(14, parametro.getUF());
 
         prd.execute();
 
