@@ -25,21 +25,21 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
     String op = "";
     MaskFormatter mascaraCNPJ;
     MaskFormatter mascaraCPF;
-
+    
     public PessoaCadastro() {
         try {
             initComponents();
             BloquearCampos();
             btnSalvar.setEnabled(false);
-            btnAlterar.setEnabled(false);
+            btnLimpar.setEnabled(false);
             txtCod.setEnabled(true);
             mascaraCNPJ = new MaskFormatter("###.###.###/####-##");
             mascaraCPF = new MaskFormatter("###.###.###-##");
-
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Erro ao carregar o formulário.");
         }
-
+        
     }
 
     /**
@@ -88,7 +88,7 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         txtEmail = new javax.swing.JTextField();
         btnNovo = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
-        btnAlterar = new javax.swing.JButton();
+        btnLimpar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
 
         setClosable(true);
@@ -117,6 +117,11 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         jLabel4.setText("CPF/ CNPJ:");
 
         btnPesquisar.setText("Pesquisar");
+        btnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPesquisarActionPerformed(evt);
+            }
+        });
 
         jLabel15.setText("Tipo Cliente:");
 
@@ -165,31 +170,27 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel1)
+                    .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(cmbTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnPesquisar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(jLabel2)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel1)
-                            .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3)
-                            .addComponent(cmbTipoPessoa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnPesquisar))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(jLabel2)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                            .addComponent(cbxLaboratorio)
-                            .addComponent(cbxFornecedor)
-                            .addComponent(jLabel15)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.CENTER, jPanel1Layout.createSequentialGroup()
-                        .addGap(71, 71, 71)
-                        .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(74, 74, 74)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(cbxLaboratorio)
+                        .addComponent(cbxFornecedor)
+                        .addComponent(jLabel15))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                        .addComponent(txtDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Endereço"));
@@ -330,7 +331,12 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAlterar.setText("Limpar");
+        btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparActionPerformed(evt);
+            }
+        });
 
         btnExcluir.setText("Excluir");
 
@@ -349,7 +355,7 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnSalvar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlterar)
+                        .addComponent(btnLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnExcluir)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -362,7 +368,7 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(btnSalvar)
-                    .addComponent(btnAlterar)
+                    .addComponent(btnLimpar)
                     .addComponent(btnExcluir))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -376,24 +382,14 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void cmbTipoPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoPessoaActionPerformed
-        if ("Pessoa Física".equals(cmbTipoPessoa.getSelectedItem())) {
-            this.txtDocumento.setValue(null);
-            this.txtDocumento.setFormatterFactory(new DefaultFormatterFactory(mascaraCPF));
-        } else if ("Pessoa Jurídica".equals(cmbTipoPessoa.getSelectedItem())) {
-            this.txtDocumento.setValue(null);
-            this.txtDocumento.setFormatterFactory(new DefaultFormatterFactory(mascaraCNPJ));
-        }
-    }//GEN-LAST:event_cmbTipoPessoaActionPerformed
-
     private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
         txtCod.setEnabled(false);
         DesbloquearCampos();
-
+        
         LimparCampos();
         btnNovo.setEnabled(false);
         btnPesquisar.setEnabled(false);
-        btnAlterar.setEnabled(false);
+        btnLimpar.setEnabled(false);
         btnSalvar.setEnabled(true);
 
     }//GEN-LAST:event_btnNovoActionPerformed
@@ -401,13 +397,13 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         try {
             ValidarTela();
-
+            
             EPessoa pessoa = new EPessoa();
-
+            
             if (!txtCod.getText().isEmpty()) {
                 pessoa.setCodigo(Integer.parseInt(txtCod.getText()));
             }
-
+            
             pessoa.setTipoPessoa((String) cmbTipoPessoa.getSelectedItem());
             pessoa.setNome(txtNome.getText());
             pessoa.setDocumento(txtDocumento.getText());
@@ -421,7 +417,7 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
             pessoa.setFone(txtFone.getText());
             pessoa.setFax(txtFax.getText());
             pessoa.setEmail(txtEmail.getText());
-
+            
             if (cbxFornecedor.isSelected() && cbxLaboratorio.isSelected()) {
                 pessoa.setCliente("Ambos");
             } else if (cbxFornecedor.isSelected()) {
@@ -431,13 +427,17 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
             } else {
                 pessoa.setCliente("Cliente");
             }
-
+            
             NPessoa negocio = new NPessoa();
             negocio.salvar(pessoa);
-
+            
             JOptionPane.showMessageDialog(null, "Operação realizada com sucesso!");
             LimparCampos();
-
+            BloquearCampos();
+            btnSalvar.setEnabled(false);
+            btnLimpar.setEnabled(false);
+            txtCod.setEnabled(true);
+            
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(null, e.getMessage());
         }
@@ -447,10 +447,49 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_cbxFornecedorActionPerformed
 
+    private void cmbTipoPessoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbTipoPessoaActionPerformed
+        if ("Pessoa Física".equals(cmbTipoPessoa.getSelectedItem())) {
+            this.txtDocumento.setValue(null);
+            this.txtDocumento.setFormatterFactory(new DefaultFormatterFactory(mascaraCPF));
+        } else if ("Pessoa Jurídica".equals(cmbTipoPessoa.getSelectedItem())) {
+            this.txtDocumento.setValue(null);
+            this.txtDocumento.setFormatterFactory(new DefaultFormatterFactory(mascaraCNPJ));
+        }
+    }//GEN-LAST:event_cmbTipoPessoaActionPerformed
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
+        LimparCampos();
+    }//GEN-LAST:event_btnLimparActionPerformed
+
+    private void btnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesquisarActionPerformed
+        try {
+            String codigo = JOptionPane.showInputDialog(""
+                    + "Digite o código da Pessoa para pesquisa:");
+            
+            if (codigo == null || codigo.equals("")) {
+                throw new Exception("Digite o código para pesquisa!");
+            }
+            
+            int intCodigo = Integer.parseInt(codigo);
+            
+            EPessoa pessoa = new NPessoa().consultar(intCodigo);
+            
+            if (pessoa.getCodigo() != 0) {
+                preencherTela(pessoa);
+            } else {
+                JOptionPane.showMessageDialog(null, "Pessoa inexistente!");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "É necessário informar um código válido!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_btnPesquisarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnExcluir;
+    private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
@@ -510,7 +549,39 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
             throw new Exception("É necessário preencher o campo UF!");
         }
     }
-
+    
+    private void preencherTela(EPessoa pessoa) {
+        txtCod.setText(pessoa.getCodigo() + "");
+        cmbTipoPessoa.setSelectedItem(pessoa.getTipoPessoa());
+        txtNome.setText(pessoa.getNome());
+        txtDocumento.setText(pessoa.getDocumento());
+        txtLogradouro.setText(pessoa.getLogradouro());
+        txtNumero.setText(pessoa.getNumero());
+        txtComplemento.setText(pessoa.getComplemento());
+        txtBairro.setText(pessoa.getBairro());
+        txtCidade.setText(pessoa.getCidade());
+        txtUF.setText(pessoa.getUF());
+        txtCEP.setText(pessoa.getCep());
+        txtFone.setText(pessoa.getFone());
+        txtFax.setText(pessoa.getFax());
+        txtEmail.setText(pessoa.getEmail());
+        
+        if ("Ambos".equals(pessoa.getCliente())) {
+            cbxFornecedor.setSelected(true);
+            cbxLaboratorio.setSelected(true);
+            
+        } else if ("Fornecedor".equals(pessoa.getCliente())) {
+            cbxFornecedor.setSelected(true);
+            
+        } else if ("Laboratorio".equals(pessoa.getCliente())) {
+            cbxLaboratorio.setSelected(true);
+            
+        }
+        
+        btnExcluir.setEnabled(true);
+        
+    }
+    
     private void LimparCampos() {
         txtCod.setText("");
         cmbTipoPessoa.setSelectedItem("Selecione...");
@@ -526,9 +597,9 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         txtFone.setText("");
         txtFax.setText("");
         txtEmail.setText("");
-
+        
     }
-
+    
     private void BloquearCampos() {
         txtCod.setEnabled(false);
         cmbTipoPessoa.setEnabled(false);
@@ -544,8 +615,10 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         txtFone.setEnabled(false);
         txtFax.setEnabled(false);
         txtEmail.setEnabled(false);
+        cbxFornecedor.setEnabled(false);
+        cbxLaboratorio.setEnabled(false);
     }
-
+    
     private void DesbloquearCampos() {
         cmbTipoPessoa.setEnabled(true);
         txtNome.setEnabled(true);
@@ -560,6 +633,8 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         txtFone.setEnabled(true);
         txtFax.setEnabled(true);
         txtEmail.setEnabled(true);
+        cbxFornecedor.setEnabled(true);
+        cbxLaboratorio.setEnabled(true);
     }
-
+    
 }
