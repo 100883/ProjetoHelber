@@ -113,7 +113,7 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         btnSalvar = new javax.swing.JButton();
         btnLimpar = new javax.swing.JButton();
         btnExcluir = new javax.swing.JButton();
-        btnListar = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Cadastro de Pessoa");
@@ -369,10 +369,10 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
             }
         });
 
-        btnListar.setText("Listar");
-        btnListar.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnListarActionPerformed(evt);
+                btnAlterarActionPerformed(evt);
             }
         });
 
@@ -393,9 +393,9 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnExcluir)
+                        .addComponent(btnAlterar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnListar)
+                        .addComponent(btnExcluir)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -408,7 +408,7 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
                     .addComponent(btnSalvar)
                     .addComponent(btnLimpar)
                     .addComponent(btnExcluir)
-                    .addComponent(btnListar))
+                    .addComponent(btnAlterar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -428,8 +428,10 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         LimparCampos();
         btnNovo.setEnabled(false);
         btnPesquisar.setEnabled(false);
-        btnLimpar.setEnabled(false);
+        btnLimpar.setEnabled(true);
+        btnAlterar.setEnabled(false);
         btnSalvar.setEnabled(true);
+        btnExcluir.setEnabled(false);
 
     }//GEN-LAST:event_btnNovoActionPerformed
 
@@ -545,17 +547,15 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-    private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
-        PessoaPesquisa pesquisar = new PessoaPesquisa();
-        pesquisar.setVisible(true);
-        
-    }//GEN-LAST:event_btnListarActionPerformed
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        DesbloquearCampos();
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
     private javax.swing.JButton btnExcluir;
     private javax.swing.JButton btnLimpar;
-    private javax.swing.JButton btnListar;
     private javax.swing.JButton btnNovo;
     private javax.swing.JButton btnPesquisar;
     private javax.swing.JButton btnSalvar;
