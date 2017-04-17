@@ -100,6 +100,11 @@ public class PessoaPesquisa extends javax.swing.JInternalFrame {
 
             }
         ));
+        tbResultado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tbResultadoMousePressed(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbResultado);
 
         btnFechar.setText("Fechar");
@@ -171,6 +176,10 @@ public class PessoaPesquisa extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtNomeKeyReleased
 
     private void jScrollPane1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MousePressed
+
+    }//GEN-LAST:event_jScrollPane1MousePressed
+
+    private void tbResultadoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbResultadoMousePressed
         try {
             int linha = tbResultado.getSelectedRow();
             String codigoSelecionado = tbResultado.getValueAt(linha, 0).toString();
@@ -187,7 +196,7 @@ public class PessoaPesquisa extends javax.swing.JInternalFrame {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-    }//GEN-LAST:event_jScrollPane1MousePressed
+    }//GEN-LAST:event_tbResultadoMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
