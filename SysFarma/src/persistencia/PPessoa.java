@@ -174,7 +174,7 @@ public class PPessoa {
                 sql += " AND nome LIKE ? ";
             }
         }
-        sql = " ORDER BY nome";
+        sql += " ORDER BY nome";
 
         PreparedStatement prd = cnn.prepareStatement(sql);
 
