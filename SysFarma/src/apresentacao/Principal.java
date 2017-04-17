@@ -37,6 +37,12 @@ public class Principal extends javax.swing.JFrame {
         JMenu = new javax.swing.JMenu();
         mnuCliente = new javax.swing.JMenuItem();
         mnuPesquisaCliente = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        mnuEstoque = new javax.swing.JMenuItem();
+        mnuProduto = new javax.swing.JMenuItem();
+        mnuPesquisarProduto = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        mnuVendas = new javax.swing.JMenuItem();
         JMenuSair = new javax.swing.JMenu();
         mnuSair = new javax.swing.JMenuItem();
 
@@ -54,7 +60,7 @@ public class Principal extends javax.swing.JFrame {
             .addGap(0, 279, Short.MAX_VALUE)
         );
 
-        JMenu.setText("Cadastro");
+        JMenu.setText("Cliente");
 
         mnuCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
         mnuCliente.setText("Cliente");
@@ -75,6 +81,26 @@ public class Principal extends javax.swing.JFrame {
         JMenu.add(mnuPesquisaCliente);
 
         jMenuBar1.add(JMenu);
+
+        jMenu1.setText("Produto");
+
+        mnuEstoque.setText("Estoque");
+        jMenu1.add(mnuEstoque);
+
+        mnuProduto.setText("Produto");
+        jMenu1.add(mnuProduto);
+
+        mnuPesquisarProduto.setText("Pesquisar Produto");
+        jMenu1.add(mnuPesquisarProduto);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Financeiro");
+
+        mnuVendas.setText("Vendas");
+        jMenu2.add(mnuVendas);
+
+        jMenuBar1.add(jMenu2);
 
         JMenuSair.setText("Sair");
 
@@ -172,10 +198,16 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMenu;
     private javax.swing.JMenu JMenuSair;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem mnuCliente;
+    private javax.swing.JMenuItem mnuEstoque;
     private javax.swing.JMenuItem mnuPesquisaCliente;
+    private javax.swing.JMenuItem mnuPesquisarProduto;
+    private javax.swing.JMenuItem mnuProduto;
     private javax.swing.JMenuItem mnuSair;
+    private javax.swing.JMenuItem mnuVendas;
     private javax.swing.JDesktopPane pnlPrincipal;
     // End of variables declaration//GEN-END:variables
 
