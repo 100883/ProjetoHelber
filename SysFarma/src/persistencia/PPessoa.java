@@ -84,7 +84,7 @@ public class PPessoa {
                 + "logradouro = ?, "
                 + "bairro = ?, "
                 + "cidade = ?, "
-                + "uf = ?, "
+                + "uf = ? "
                 + " WHERE codigo = ?";
 
         PreparedStatement prd = cnn.prepareStatement(sql);
