@@ -36,6 +36,7 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         JMenu = new javax.swing.JMenu();
         mnuCliente = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         JMenuSair = new javax.swing.JMenu();
         mnuSair = new javax.swing.JMenuItem();
 
@@ -63,6 +64,15 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         JMenu.add(mnuCliente);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Pesquisar Cliente");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        JMenu.add(jMenuItem1);
 
         jMenuBar1.add(JMenu);
 
@@ -111,6 +121,18 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mnuClienteActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        try {
+            
+            PessoaPesquisa frame = new PessoaPesquisa(pnlPrincipal);
+                    this.pnlPrincipal.add(frame);
+                    frame.setVisible(true);
+                    
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -150,6 +172,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu JMenu;
     private javax.swing.JMenu JMenuSair;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem mnuCliente;
     private javax.swing.JMenuItem mnuSair;
     private javax.swing.JDesktopPane pnlPrincipal;
