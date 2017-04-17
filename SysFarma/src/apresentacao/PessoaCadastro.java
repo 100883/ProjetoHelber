@@ -549,6 +549,7 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         DesbloquearCampos();
+        btnSalvar.setEnabled(true);
     }//GEN-LAST:event_btnAlterarActionPerformed
 
 
