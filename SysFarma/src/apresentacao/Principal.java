@@ -220,7 +220,7 @@ public class Principal extends javax.swing.JFrame {
         }
     }
     
-    private static void centralizar(JInternalFrame fr) {
+    public static void centralizar(JInternalFrame fr) {
         Dimension d = fr.getDesktopPane().getSize();
         fr.setLocation((d.width - fr.getSize().width) / 2,
                 (d.height - fr.getSize().height) / 2);

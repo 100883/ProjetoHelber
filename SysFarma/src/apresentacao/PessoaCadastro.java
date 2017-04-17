@@ -477,6 +477,10 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
             BloquearCampos();
             btnSalvar.setEnabled(false);
             btnLimpar.setEnabled(false);
+            btnNovo.setEnabled(true);
+            btnPesquisar.setEnabled(true);
+            
+            
             txtCod.setEnabled(true);
             
         } catch (Exception e) {
@@ -532,7 +536,7 @@ public class PessoaCadastro extends javax.swing.JInternalFrame {
         try {
             
             int resposta = JOptionPane.showConfirmDialog(null, 
-                    "Conforma a exclusão da pessoa?", "SysFarma",
+                    "Confirma a exclusão da pessoa?", "SysFarma",
                     JOptionPane.YES_NO_OPTION);
             
             if(resposta == JOptionPane.YES_OPTION){

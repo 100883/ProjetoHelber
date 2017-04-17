@@ -192,6 +192,7 @@ public class PessoaPesquisa extends javax.swing.JInternalFrame {
             cadastro = new PessoaCadastro(codigo);
             this.pnlPrincipal.add(cadastro);
             cadastro.setVisible(true);
+            Principal.centralizar(cadastro);
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
